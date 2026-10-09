@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.adpilot-preview/
+.vite/
+*.log
+.DS_Store
