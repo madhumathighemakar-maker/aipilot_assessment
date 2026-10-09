@@ -33,7 +33,7 @@ export default function ProductShowcase() {
   const active = insights[selected];
   const choose = id => { setSelected(id); setReasoningOpen(false); };
 
-  return <section className="product-showcase" aria-labelledby="product-showcase-title">
+  return <section className="product-showcase" id="product-preview" aria-labelledby="product-showcase-title">
     <div className="showcase-heading">
       <div><div className="section-kicker"><span className="section-dot"/> ADPILOT INTELLIGENCE</div><h2 id="product-showcase-title">Your campaigns.<br/>One clear picture.</h2></div>
       <p>See what changed, understand what matters, and review the next best action without manually connecting signals across platforms.</p>
