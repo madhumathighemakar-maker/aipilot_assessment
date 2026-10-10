@@ -211,6 +211,34 @@
 .feature-showcase{padding-top:76px;padding-bottom:95px}.feature-showcase>header{margin-bottom:36px}.feature-showcase>header>span{font-size:9px}.feature-showcase h2{font-size:clamp(40px,3.7vw,54px);letter-spacing:-2.7px;margin-top:12px;margin-bottom:8px}.feature-showcase>header p{font-size:14px}.feature-card-grid{max-width:1240px;gap:12px}.capability-card{min-height:395px;padding:18px;border-radius:10px}.capability-head{gap:11px}.capability-head>span{width:42px;height:42px;border-radius:9px}.capability-head svg{width:21px}.capability-head h3{font-size:14px;margin-top:3px}.capability-head p{font-size:10px;line-height:1.4}.mini-campaign,.creative-strip{margin-top:21px}.mini-campaign svg{height:93px}.mini-alert{top:57px}.mini-budget{margin-top:21px;padding:14px}.mini-budget h4{font-size:13px}.creative-strip>span{height:82px}.creative-stats{margin-top:15px}.creative-stats b{font-size:15px}.channel-map{height:135px;margin-top:18px}.channel{width:41px;height:41px}.channel-map i{top:68px;width:44px;height:44px}.channel-map b{top:84px}.connected-note{padding:10px}.capability-card>a{font-size:10px;min-height:38px;padding-top:9px}
 @media(max-width:1200px) and (min-width:1001px){.connected-system{width:1120px}.reference-dashboard{grid-template-columns:145px minmax(0,1fr)}.reference-focus{grid-template-columns:1.25fr .9fr}.reference-opportunities{grid-column:1/3;display:grid;grid-template-columns:1fr 1fr;gap:7px}.reference-opportunities header{grid-column:1/3}.dashboard-fade{left:145px}.feature-card-grid{grid-template-columns:1fr 1fr}.capability-card{min-height:390px}}
 
+/* Make the dashboard priority card legible as a decision, before expansion. */
+.reference-insight .reference-observation,.reference-insight .reference-interpretation{margin-top:8px;font-size:8px;line-height:1.45}.reference-insight .reference-observation b,.reference-insight .reference-interpretation b{display:block;margin-bottom:2px;color:#435447;font:700 7px var(--mono);letter-spacing:.08em;text-transform:uppercase}.reference-insight .reference-interpretation{color:#5c6b60}.reference-insight .reference-facts{margin:11px 0}.reference-insight>button{font-weight:650}
+
+/* Keep the decision evidence readable when the dashboard is presented at desktop scale. */
+.reference-insight .reference-observation,.reference-insight .reference-interpretation{font-size:9px}.reference-insight .reference-observation b,.reference-insight .reference-interpretation b{font-size:8px}.reference-facts small{font-size:8px}.reference-facts b{font-size:14px}.reference-insight>button{font-size:10px}
+
+/* Hero-to-product hand-off: the intelligence workspace is the destination of the hero network. */
+@media(min-width:1001px){
+  .hero--connected{padding-bottom:0;background:linear-gradient(180deg,#f8f9f6 0%,#f8f9f6 82%,#f4f8f1 100%)}
+  .hero--connected+.product-showcase{position:relative;z-index:2;margin-top:-18px;padding-top:0;padding-bottom:0;background:linear-gradient(180deg,#f4f8f1 0%,#f7f8f5 78%)}
+  .hero--connected+.product-showcase:after{content:'';position:absolute;z-index:0;inset:auto 0 -180px;height:300px;pointer-events:none;background:radial-gradient(ellipse at 50% 0%,rgba(157,218,143,.17),rgba(247,248,245,0) 64%)}
+  .dashboard-destination{position:relative;z-index:2;transform-origin:50% 0}
+  .reference-dashboard{min-height:620px}
+  .reference-main{padding-bottom:118px}
+  .dashboard-fade{height:255px;background:linear-gradient(to bottom,rgba(255,255,255,0),rgba(247,248,245,.6) 39%,#f7f8f5 88%)}
+  .dashboard-waves{height:250px;bottom:-26px;opacity:.96}
+  .scroll-explore{bottom:31px}
+  .feature-showcase{position:relative;z-index:4;margin-top:-128px;padding-top:220px;background:radial-gradient(ellipse at 50% 0%,rgba(128,203,119,.16),rgba(247,248,245,0) 33%),#f7f8f5}
+}
+
+@supports(animation-timeline:view()){
+  .feature-showcase{animation:feature-stage-rise linear both;animation-timeline:view();animation-range:entry 0% entry 38%}
+  .capability-card{animation:feature-card-rise linear both;animation-timeline:view();animation-range:entry 0% entry 48%}
+}
+@keyframes feature-stage-rise{from{opacity:.5;transform:translateY(52px)}to{opacity:1;transform:translateY(0)}}
+@keyframes feature-card-rise{from{opacity:.35;transform:translateY(46px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.feature-showcase,.capability-card{animation:none!important;transform:none!important}}
+
 @media(min-width:1001px){.nav-actions{gap:26px;padding-left:34px;border-left:0}.sign-in{font-size:12px;color:#5f6b62}.nav-links{justify-content:center}.hero--connected{border-bottom:0}.connected-card{border-color:#dce5da}.dashboard-destination{border-color:#d6e2d3}.feature-showcase{border-top:0}}
 
 /* Polished mesh hand-off: exact alignment, quiet stroke, restrained nodes. */
@@ -519,3 +547,76 @@ html{background:var(--page);scroll-padding-top:100px}body,.site-shell{background
 @media(prefers-reduced-motion:reduce){.insight-detail{animation:none}}
 
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* Hero refinement: the model is stated in copy, then made visible in the connected system. */
+.hero-operating-model{display:flex;align-items:center;justify-content:center;gap:9px;margin:18px 0 0;color:#5d745f;font:700 8px var(--mono);letter-spacing:.11em;text-transform:uppercase}.adpilot-core small{max-width:72px;text-align:center;line-height:1.35}
+@media(max-width:700px){.hero-operating-model{flex-wrap:wrap;gap:7px;margin-top:16px;font-size:7px}.hero-operating-model i{width:2px;height:2px}}
+
+/* Decision-framework rail: accommodate the editorial title without competing with the stage labels. */
+.feature-rail .rail-title{max-width:132px;font-size:7px;line-height:1.55;letter-spacing:.13em}.feature-rail nav a>span:not(.rail-step){font-weight:600}
+
+/* Compact the final demo state so it remains a clear CTA instead of a full-height form section. */
+.closing-section.closing-section--refresh{min-height:490px;padding:76px 24px 100px!important}.closing-cta__content{margin-top:-22px}.closing-section--refresh h2{margin-top:14px;margin-bottom:10px}.closing-cta__actions{margin-top:20px}.closing-demo{width:min(440px,92vw);margin-top:12px;padding:9px 10px;border-radius:8px}.closing-demo form{gap:8px}.closing-demo label{gap:4px;font-size:9px}.closing-demo input,.closing-demo button{height:36px}.closing-demo button{padding-inline:13px;font-size:11px}.closing-demo__success{min-height:36px}.closing-demo__success small{font-size:8px}
+@media(max-width:650px){.closing-section.closing-section--refresh{min-height:500px;padding:76px 20px 92px!important}.closing-cta__content{margin-top:0}.closing-demo{width:100%;margin-top:10px}.closing-demo input,.closing-demo button{height:40px}}
+
+/* Evidence-led recommendation copy and desktop hero label clarity. */
+.reference-impact{margin:8px 0 0;padding:8px 9px;border-left:2px solid #85b95e;background:#f4f8f1;color:#516050;font-size:10px;line-height:1.45}.reference-impact b{display:block;margin-bottom:3px;color:#4f7b35;font:700 8px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+@media (min-width:701px){.hero--connected .connected-card{min-width:206px;padding:13px 15px}.hero--connected .connected-card b{font-size:12px;line-height:1.25}.hero--connected .connected-card small{font-size:9px;line-height:1.4;color:#556257}.hero--connected .connected-icon{font-size:16px;font-weight:800}.hero--connected .input-stack,.hero--connected .output-stack{gap:13px}}
+@media (max-width:700px){.reference-impact{font-size:9px;padding:7px 8px}}
+
+/* Assemble-inspired scroll choreography: one scene joins the connected signals to the live workspace. */
+.hero-reveal-scene{position:relative;isolation:isolate;background:#f8f9f6}.reveal-signal-lines{transform-origin:50% 52%;will-change:transform,opacity}.reveal-input-stack,.reveal-output-stack,.reveal-core,.dashboard-scroll-motion{will-change:transform,opacity}.dashboard-scroll-motion{transform-origin:50% 0;transform-style:preserve-3d;perspective:1200px}
+/* Requested product frame treatment. The 8px frame is deliberately neutral so the UI remains the focal point. */
+.workspace-shell.dashboard-destination{border:8px solid #e5ece2;border-radius:8px;box-shadow:0 26px 76px rgba(30,57,37,.11),0 0 0 1px rgba(94,137,81,.12),0 34px 68px rgba(120,191,111,.1)}
+.workspace-shell.dashboard-destination .workspace-bar{border-radius:0}
+@media (min-width:1001px){.hero-reveal-scene{padding-bottom:12px}.hero--connected{position:relative;z-index:2}.hero--connected+.product-showcase{position:relative;z-index:3}.dashboard-scroll-motion{margin-top:-8px}.reveal-core{z-index:5}.reveal-signal-lines{transform-box:fill-box}}
+@media (max-width:1000px){.reveal-input-stack,.reveal-output-stack,.reveal-core,.reveal-signal-lines,.dashboard-scroll-motion{transform:none!important;opacity:1!important}.dashboard-scroll-motion{margin-top:0}.workspace-shell.dashboard-destination{border-width:5px;border-radius:8px}}
+@media (max-width:700px){.workspace-shell.dashboard-destination{border-width:4px}.hero-reveal-scene{overflow:hidden}}
+@media (prefers-reduced-motion:reduce){.reveal-input-stack,.reveal-output-stack,.reveal-core,.reveal-signal-lines,.dashboard-scroll-motion{transform:none!important;opacity:1!important;transition:none!important}}
+
+/* A more contained product preview keeps the hero composition spacious at desktop scale. */
+@media (min-width:1001px){.workspace-shell.dashboard-destination{width:min(100%,960px);max-width:960px}.hero--connected+.product-showcase{padding-inline:clamp(28px,7vw,120px)}}
+@media (max-width:1200px) and (min-width:1001px){.workspace-shell.dashboard-destination{width:min(100%,900px);max-width:900px}}
+
+
+/* Desktop composition: contain the network so its convergence reads before the product preview begins. */
+@media (min-width:1001px){
+  .hero--connected{min-height:680px}
+  .connected-system{width:min(1200px,calc(100vw - 112px));height:370px;margin-top:8px}
+  .connected-system>svg{height:370px}
+  .input-stack,.output-stack{width:230px;top:30px;bottom:25px}
+  .input-stack{left:0}.output-stack{right:0}
+  .connected-card{box-sizing:border-box;width:100%;min-width:0;min-height:54px;padding:8px 11px}
+  .connected-card b{font-size:11px}.connected-card small{font-size:8px}
+  .adpilot-core{top:55%}
+  .hero--connected+.product-showcase{margin-top:-12px}
+  .workspace-shell.dashboard-destination{margin-top:0}
+}
+
+/* Clear decision-story hero: inputs, intelligence, and outcomes are readable in one scan. */
+.hero-decision-points{display:grid;gap:8px;margin:20px 0 0;padding:0;list-style:none;color:#4e5d50;font-size:12px;line-height:1.4}.hero-decision-points li{display:flex;align-items:center;gap:9px}.hero-decision-points li:before{content:'';width:6px;height:6px;flex:none;border-radius:50%;background:#61a64d;box-shadow:0 0 0 4px rgba(97,166,77,.1)}
+@media (min-width:1001px){
+  .hero--connected{display:grid;grid-template-columns:minmax(400px,.9fr) minmax(560px,1.1fr);column-gap:clamp(32px,6vw,100px);align-items:center;min-height:610px;padding:66px clamp(44px,7vw,132px) 48px}
+  .connected-hero-copy{max-width:590px;margin:0;text-align:left}
+  .connected-eyebrow{font-size:9px}.hero--connected h1{margin:15px 0 16px;font-size:clamp(52px,4.25vw,68px);letter-spacing:-3.2px}
+  .connected-hero-copy>p{max-width:570px;margin:0;font-size:15px;line-height:1.58}
+  .connected-actions{justify-content:flex-start;margin-top:24px}.hero-operating-model{justify-content:flex-start;margin-top:24px}
+  .connected-system{grid-column:2;grid-row:1;left:auto;width:100%;height:360px;margin:0;transform:none}
+  .connected-system>svg{height:360px}.input-stack,.output-stack{top:54px;bottom:52px;width:205px}.input-stack{left:0}.output-stack{right:0}
+  .connected-card{min-height:58px}.adpilot-core{top:50%}
+  .hero--connected+.product-showcase{margin-top:-8px}
+}
+@media (max-width:1000px){.hero-decision-points{display:none}}
+
+/* Keep the intelligence card centred in the signal corridor and clear of the outcome panels. */
+@media (min-width:1001px){
+  .connected-system .adpilot-core{left:46%;z-index:6}
+  .connected-system .output-stack{right:-38px}
+  .connected-system .core-orbit{inset:-48px}
+}
+@media (max-width:1200px) and (min-width:1001px){.connected-system .output-stack{right:-18px}.connected-system .adpilot-core{left:47%}}
+
+/* Layered scroll depth without decorative drift; each signal follows the same convergence direction. */
+.reveal-card{will-change:transform}
+@media (max-width:1000px){.reveal-card{transform:none!important}}
+@media (prefers-reduced-motion:reduce){.reveal-card{transform:none!important}}

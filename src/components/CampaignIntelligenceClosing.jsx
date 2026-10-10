@@ -55,7 +55,7 @@ function CampaignIntelligenceProof() {
         <div className="attention-card">
           <span><TrendingDown size={17} /></span>
           <div>
-            <b>Performance requires attention</b>
+            <b>Northstar Prospecting requires attention</b>
             <small>Conversions declined by 32% over three days alongside lower creative CTR.</small>
           </div>
         </div>
@@ -83,7 +83,7 @@ function CampaignIntelligenceProof() {
 
         <div className="next-step-card">
           <span className="next-step-card__icon"><Lightbulb size={18} /></span>
-          <div><small>RECOMMENDED NEXT STEP</small><b>Test a new creative variation</b></div>
+          <div><small>RECOMMENDED NEXT STEP</small><b>Test a new Northstar creative variation</b></div>
           <button type="button" onClick={() => setTestCreated(true)} disabled={testCreated}>
             {testCreated ? <><Check size={15} /> Test prepared</> : <>Create test <ArrowRight size={15} /></>}
           </button>
