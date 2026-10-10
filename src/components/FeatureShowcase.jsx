@@ -1,13 +1,84 @@
-import { ArrowRight, BarChart3, CircleDollarSign, Image, Network } from 'lucide-react';
+﻿import { BarChart3, CircleDollarSign, Image, Network, TrendingDown } from 'lucide-react';
 
-export default function FeatureShowcase(){
- return <section className="feature-showcase" aria-labelledby="feature-showcase-title">
-  <header><span>FEATURES</span><h2 id="feature-showcase-title">Built for <em>smarter advertising decisions.</em></h2><p>Everything you need to turn campaign data into clear, confident actions.</p></header>
-  <div className="feature-card-grid">
-   <article className="capability-card"><div className="capability-head"><span><BarChart3/></span><div><h3>Campaign Intelligence</h3><p>Identify performance changes and understand what’s driving them.</p></div></div><div className="mini-campaign"><div><span><small>Conversions</small><b>18.6K</b><em>↓ 32%</em></span><span><small>ROAS (Avg)</small><b>4.2×</b><em className="positive">↑ 12%</em></span></div><svg viewBox="0 0 310 105" aria-hidden="true"><path className="mini-grid" d="M5 30H305M5 62H305M5 94H305"/><path className="mini-muted" d="M8 80 L58 44 L108 73 L158 63 L208 82 L258 68 L302 28"/><path className="mini-main" d="M8 70 L58 51 L108 75 L158 82 L208 71 L258 60 L302 22"/><circle cx="158" cy="82" r="4"/></svg><span className="mini-alert">Performance dropped · creative CTR ↓ 28%</span></div><a href="#understand">Explore campaign intelligence <ArrowRight/></a></article>
-   <article className="capability-card"><div className="capability-head"><span><CircleDollarSign/></span><div><h3>Budget Optimisation</h3><p>Find scaling opportunities and allocate spend more effectively.</p></div></div><div className="mini-budget"><small>SCALE OPPORTUNITY</small><h4>Scale Google Search</h4><p>ROAS is above target and delivery may be limited by budget.</p><div><span><small>ROAS</small><b>6.1×</b><em>↑ 38%</em></span><span><small>Budget utilisation</small><b>62%</b><i><u/></i></span></div></div><a href="#recommend">Explore budget optimisation <ArrowRight/></a></article>
-   <article className="capability-card"><div className="capability-head"><span><Image/></span><div><h3>Creative Intelligence</h3><p>Discover winning creatives and new testing opportunities across platforms.</p></div></div><div className="creative-strip"><span className="creative-a"><i>▶</i><b>DEMO</b></span><span className="creative-b"><b>PRODUCT</b></span><span className="creative-c"><b>STORY</b></span><span className="creative-more">+3</span></div><div className="creative-stats"><span><small>CTR</small><b>3.2×</b><em>↑ 230%</em></span><span><small>CVR</small><b>2.1×</b><em>↑ 110%</em></span><span><small>CPA</small><b>−28%</b><em>↓ 28%</em></span></div><a href="#learn">Explore creative intelligence <ArrowRight/></a></article>
-   <article className="capability-card"><div className="capability-head"><span><Network/></span><div><h3>Cross-channel Analysis</h3><p>See the bigger picture with unified insights from all your platforms.</p></div></div><div className="channel-map"><span className="channel google">G</span><span className="channel meta">∞</span><span className="channel tiktok">♪</span><i/><b/></div><div className="connected-note"><BarChart3/><p><b>Connected insights</b><small>Understand how platforms, campaigns and creatives influence each other.</small></p></div><a href="#observe">Explore cross-channel analysis <ArrowRight/></a></article>
-  </div>
- </section>;
+import { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+
+const cards = [
+  {
+    id: 'campaign',
+    Icon: BarChart3,
+    title: 'Campaign Intelligence',
+    description: 'Identify material changes and investigate potential drivers.',
+    takeaway: 'Northstar Prospecting: CTR and conversion efficiency need review.',
+  },
+  {
+    id: 'budget',
+    Icon: CircleDollarSign,
+    title: 'Budget Optimisation',
+    description: 'Find scaling opportunities while managing efficiency.',
+    takeaway: 'Summer Acquisition is above target but constrained by budget.',
+  },
+  {
+    id: 'creative',
+    Icon: Image,
+    title: 'Creative Intelligence',
+    description: 'Surface creative fatigue signals and testing opportunities.',
+    takeaway: 'Test the strongest short-form concept in a new placement.',
+  },
+  {
+    id: 'channel',
+    Icon: Network,
+    title: 'Cross-channel Analysis',
+    description: 'Connect performance insights across advertising platforms.',
+    takeaway: 'One view links campaign, creative, and budget context.',
+  },
+];
+
+function CampaignVisual() {
+  return <div className="feature-product-visual campaign-visual" aria-label="Illustrative campaign trend">
+    <div className="feature-visual-heading"><span>3-DAY PERFORMANCE</span><b>Northstar Prospecting</b></div>
+    <svg viewBox="0 0 280 118" role="img" aria-label="Campaign conversion trend declining over three days"><path className="feature-grid" d="M10 20H270M10 56H270M10 92H270" /><path className="feature-trend-muted" d="M12 43 L57 38 L102 42 L147 40 L192 43 L237 41 L268 44" /><path className="feature-trend" d="M12 28 L57 35 L102 48 L147 64 L192 72 L237 79 L268 83" /><circle cx="147" cy="64" r="4" /></svg>
+    <p><TrendingDown size={13} /> Conversions down 32%; creative CTR down 28%.</p>
+  </div>;
+}
+
+function BudgetVisual() {
+  return <div className="feature-product-visual budget-visual" aria-label="Illustrative budget recommendation">
+    <div className="feature-visual-heading"><span>SCALING OPPORTUNITY</span><b>Summer Acquisition</b></div>
+    <div className="budget-metric-row"><div><small>Current ROAS</small><b>4.8x</b></div><div><small>Target ROAS</small><b>3.5x</b></div></div>
+    <div className="budget-limit"><div><span>Budget utilisation</span><b>98%</b></div><i><u /></i><small>Reaches its daily budget limit</small></div>
+  </div>;
+}
+
+function CreativeVisual() {
+  return <div className="feature-product-visual creative-visual" aria-label="Illustrative creative comparison">
+    <div className="feature-visual-heading"><span>CREATIVE COMPARISON</span><b>Short-form product concepts</b></div>
+    <div className="creative-comparison"><span className="creative-tile creative-tile--lead"><i>01</i><b>Product demo</b></span><span className="creative-tile creative-tile--test"><i>02</i><b>Creator story</b></span><span className="creative-tile creative-tile--new"><i>+</i><b>Test next</b></span></div>
+    <p>Highest-response concept is ready for a controlled test.</p>
+  </div>;
+}
+
+function ChannelVisual() {
+  return <div className="feature-product-visual channel-visual" aria-label="Illustrative cross-channel connection">
+    <div className="feature-visual-heading"><span>CONNECTED CONTEXT</span><b>Shared performance view</b></div>
+    <svg viewBox="0 0 280 118" aria-hidden="true"><path d="M44 76 C88 76 92 56 139 56 C186 56 191 76 236 76" /><path d="M44 33 C84 33 98 55 139 56 C180 57 197 33 236 33" /><circle cx="44" cy="76" r="14" /><circle cx="44" cy="33" r="14" /><circle cx="236" cy="33" r="14" /><circle cx="140" cy="56" r="20" /><text x="44" y="81">M</text><text x="44" y="38">G</text><text x="236" y="38">T</text><text x="140" y="61">A</text></svg>
+    <p>Signals connect before a recommendation is prioritised.</p>
+  </div>;
+}
+
+const visuals = { campaign: CampaignVisual, budget: BudgetVisual, creative: CreativeVisual, channel: ChannelVisual };
+
+export default function FeatureShowcase() {
+  const sectionRef = useRef(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start 90%', 'start 48%'] });
+  const opacity = useTransform(scrollYProgress, [0, 0.36, 1], [0.08, 0.62, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [54, 0]);
+
+  return <motion.section ref={sectionRef} className="feature-showcase feature-showcase--scroll-reveal" aria-labelledby="feature-showcase-title" style={{ opacity: reduceMotion ? 1 : opacity, y: reduceMotion ? 0 : y }}>
+    <header><span>FEATURES</span><h2 id="feature-showcase-title">Built for <em>smarter advertising decisions.</em></h2><p>Turn connected advertising signals into clear, confident actions.</p></header>
+    <div className="feature-card-grid">
+      {cards.map(({ id, Icon, title, description, takeaway }) => { const Visual = visuals[id]; return <article className="capability-card" key={id}><div className="capability-head"><span><Icon size={20} /></span><div><h3>{title}</h3><p>{description}</p></div></div><Visual /><div className="capability-takeaway"><small>TAKEAWAY</small><b>{takeaway}</b></div></article>; })}
+    </div>
+  </motion.section>;
 }

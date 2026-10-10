@@ -9,9 +9,9 @@ import {
 } from 'lucide-react';
 
 const intelligencePoints = [
-  { icon: TrendingDown, label: 'Detect emerging trends and potential risks' },
-  { icon: Gauge, label: 'Analyse key performance drivers' },
-  { icon: CircleDot, label: 'Get clear, actionable insights' },
+  { icon: TrendingDown, label: 'Surface material performance changes' },
+  { icon: Gauge, label: 'Review the evidence behind them' },
+  { icon: CircleDot, label: 'Choose a controlled next step' },
 ];
 
 function CampaignIntelligenceProof() {
@@ -23,11 +23,10 @@ function CampaignIntelligenceProof() {
         <span className="campaign-proof__eyebrow">CAMPAIGN INTELLIGENCE</span>
         <h2 id="campaign-proof-title">
           Go beyond the numbers<br />
-          to uncover <em>what’s next.</em>
+          to uncover <em>whatâ€™s next.</em>
         </h2>
         <p>
-          AdPilot helps you identify meaningful performance changes, understand
-          the contributing signals, and focus on opportunities that matter.
+          Identify the change, review the evidence, and decide what to test.
         </p>
         <ul>
           {intelligencePoints.map(({ icon: Icon, label }) => (
@@ -55,13 +54,13 @@ function CampaignIntelligenceProof() {
         <div className="attention-card">
           <span><TrendingDown size={17} /></span>
           <div>
-            <b>Northstar Prospecting requires attention</b>
-            <small>Conversions declined by 32% over three days alongside lower creative CTR.</small>
+            <b>Northstar Prospecting needs review</b>
+            <small>Conversions fell 32% over three days alongside lower creative CTR.</small>
           </div>
         </div>
 
         <div className="conversion-card">
-          <div><span>Conversions</span><b>↓ 32%</b></div>
+          <div><span>Conversions</span><b>â†“ 32%</b></div>
           <svg viewBox="0 0 310 122" preserveAspectRatio="none" aria-hidden="true">
             <path className="conversion-grid" d="M8 22 H302 M8 61 H302 M8 100 H302" />
             <path className="conversion-line conversion-line--soft" d="M10 74 L59 49 L108 79 L157 92 L206 77 L255 70 L301 32" />
@@ -72,18 +71,18 @@ function CampaignIntelligenceProof() {
         </div>
 
         <div className="cause-card">
-          <span>Possible causes</span>
+          <span>Signals to verify</span>
           <dl>
-            <div><dt>Creative fatigue</dt><dd>68%</dd></div>
-            <div><dt>Audience saturation</dt><dd>24%</dd></div>
-            <div><dt>Increased CPC</dt><dd>8%</dd></div>
+            <div><dt>Creative fatigue</dt><dd>Check</dd></div>
+            <div><dt>Audience saturation</dt><dd>Review</dd></div>
+            <div><dt>CPC pressure</dt><dd>Monitor</dd></div>
           </dl>
           <small>Illustrative evidence, not confirmed causation.</small>
         </div>
 
         <div className="next-step-card">
           <span className="next-step-card__icon"><Lightbulb size={18} /></span>
-          <div><small>RECOMMENDED NEXT STEP</small><b>Test a new Northstar creative variation</b></div>
+          <div><small>RECOMMENDED NEXT STEP</small><b>Prepare a controlled creative test</b></div>
           <button type="button" onClick={() => setTestCreated(true)} disabled={testCreated}>
             {testCreated ? <><Check size={15} /> Test prepared</> : <>Create test <ArrowRight size={15} /></>}
           </button>

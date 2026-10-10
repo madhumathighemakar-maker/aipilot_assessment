@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Activity, ArrowRight, BarChart3, CalendarDays, CheckCircle2, CircleDollarSign, Plus, Search, Sparkles, TrendingDown } from 'lucide-react';
+import { Activity, ArrowRight, BarChart3, CalendarDays, CheckCircle2, CircleDollarSign, Instagram, Linkedin, Plus, Search, Sparkles, TrendingDown, Youtube } from 'lucide-react';
 import { motion, useReducedMotion, useTransform } from 'framer-motion';
 import DashboardBody from './DashboardBody.jsx';
 import { useHeroReveal } from './HeroReveal.jsx';
@@ -10,22 +10,22 @@ const insights = {
     status: 'INVESTIGATE',
     tone: 'decline',
     title: 'Northstar Prospecting is losing efficiency',
-    changed: 'ROAS declined from 3.8x to 3.1x over three days while spend remained stable.',
-    evidence: 'Creative CTR decreased from 1.9% to 1.4% during the same period.',
-    interpretation: 'Creative fatigue may be contributing, but the available evidence does not confirm causation.',
-    action: 'Review creative age, frequency, and placement performance before changing delivery.',
-    impact: 'Potential impact: identify a controlled creative test that may recover response. The result remains uncertain until it is measured.'
+    changed: 'ROAS fell from 3.8x to 3.1x over three days; spend was stable.',
+    evidence: 'Creative CTR fell from 1.9% to 1.4% in the same period.',
+    interpretation: 'Creative fatigue is worth testing; the evidence does not prove causation.',
+    action: 'Review creative age, frequency, and placement before changing delivery.',
+    impact: 'Potential impact: identify a controlled creative test to measure whether response recovers.'
   },
   scale: {
     label: 'Scaling opportunity',
     status: 'REVIEW',
     tone: 'scale',
     title: 'Summer Acquisition may have room to scale',
-    changed: 'ROAS is 4.8x against a 3.5x target while budget utilisation has reached 98%.',
-    evidence: 'Conversion volume remains stable and the campaign is repeatedly reaching its daily budget.',
-    interpretation: 'Current efficiency and constrained delivery suggest a potential opportunity, with marginal efficiency still to verify.',
-    action: 'Evaluate a controlled budget increase with an approval checkpoint and efficiency guardrail.',
-    impact: 'Potential impact: test incremental demand while monitoring whether ROAS remains above the efficiency target.'
+    changed: 'ROAS is 4.8x against a 3.5x target; budget use is 98%.',
+    evidence: 'Conversions are stable while the campaign repeatedly reaches its daily budget.',
+    interpretation: 'There may be room to scale; marginal efficiency still needs verification.',
+    action: 'Evaluate a controlled increase with an approval checkpoint and efficiency guardrail.',
+    impact: 'Potential impact: test incremental demand while monitoring the ROAS target.'
   }
 };
 
@@ -44,9 +44,14 @@ export default function ProductShowcase() {
   return <section className="product-showcase" id="product-preview" aria-labelledby="product-showcase-title">
     <div className="showcase-heading">
       <div><div className="section-kicker"><span className="section-dot"/> ADPILOT INTELLIGENCE</div><h2 id="product-showcase-title">Your campaigns.<br/>One clear picture.</h2></div>
-      <p>See what changed, understand what matters, and review the next best action without manually connecting signals across platforms.</p>
+      <p>A unified workspace that surfaces performance changes, scaling opportunities, and creative insights.</p>
     </div>
     <div className="showcase-connector" aria-hidden="true"><span/></div>
+    <div className="floating-product-stage">
+      <div className="floating-platform floating-platform--meta" aria-hidden="true"><b>M</b><span>Meta</span></div>
+      <div className="floating-platform floating-platform--instagram" aria-hidden="true"><Instagram/><span>Instagram</span></div>
+      <div className="floating-platform floating-platform--youtube" aria-hidden="true"><Youtube/><span>YouTube</span></div>
+      <div className="floating-platform floating-platform--linkedin" aria-hidden="true"><Linkedin/><span>LinkedIn</span></div>
     <motion.div className="workspace-shell dashboard-destination dashboard-scroll-motion" style={{ scale: dashboardScale, y: dashboardY, rotateX: dashboardRotate, opacity: dashboardOpacity }} initial={reduceMotion?false:{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.15}} transition={{duration:reduceMotion?0:.55}}>
       <header className="workspace-bar dashboard-toolbar"><div className="workspace-brand"><span><Sparkles size={15}/></span><div><b>AdPilot</b><small>Intelligence workspace</small></div></div><label className="dashboard-search"><Search size={14}/><span className="sr-only">Search demonstration workspace</span><input aria-label="Search demonstration workspace" placeholder="Search campaigns, creatives, insights..."/></label><button type="button" className="dashboard-period"><CalendarDays size={14}/> May 12 - May 18, 2026</button><button type="button" className="dashboard-new"><Plus size={14}/> New campaign</button></header>
       <DashboardBody active={active} selected={selected} choose={choose} reasoningOpen={reasoningOpen} setReasoningOpen={setReasoningOpen}/>
@@ -82,5 +87,6 @@ export default function ProductShowcase() {
       </div>
       <div className="showcase-opportunities"><span>OTHER OPPORTUNITIES</span><button type="button" onClick={()=>choose('scale')}><CircleDollarSign size={17}/><p><small>SCALE OPPORTUNITY</small><b>Room to increase budget</b><em>ROAS is above target and delivery may be budget limited.</em></p><ArrowRight size={15}/></button><button type="button" onClick={()=>choose('decline')}><BarChart3 size={17}/><p><small>CREATIVE REVIEW</small><b>Investigate creative fatigue</b><em>CTR is declining alongside campaign performance.</em></p><ArrowRight size={15}/></button></div>
     </motion.div>
+    </div>
   </section>;
 }
